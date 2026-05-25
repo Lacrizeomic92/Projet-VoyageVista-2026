@@ -240,6 +240,39 @@ a{
     box-shadow:0 14px 25px rgba(255,122,0,0.28);
 }
 
+.search-item label{
+    display:block;
+    color:var(--blue);
+    font-size:14px;
+    font-weight:900;
+    margin-bottom:10px;
+    text-transform:uppercase;
+}
+
+.search-item input,
+.search-item select{
+    width:100%;
+    border:none;
+    outline:none;
+    background:transparent;
+    font-size:22px;
+    font-weight:900;
+    color:var(--text);
+}
+
+.search-item input::placeholder{
+    color:var(--text);
+}
+
+.search-item select{
+    appearance:none;
+    cursor:pointer;
+}
+
+.search-btn{
+    border:none;
+    cursor:pointer;
+}
 
 /* QUICK CARDS */
 

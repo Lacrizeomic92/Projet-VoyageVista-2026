@@ -13,24 +13,44 @@
             hébergement et activités dans une seule plateforme.
         </p>
 
-        <div class="search-box">
-            <div class="search-item">
-                <span>📍 Destination</span>
-                <strong>Où voulez-vous partir ?</strong>
-            </div>
+        <form class="search-box" action="index.php" method="GET">
+            <input type="hidden" name="page" value="destinations">
 
             <div class="search-item">
-                <span>📅 Départ</span>
-                <strong>15 juin 2026</strong>
-            </div>
-
-            <div class="search-item">
-                <span>👥 Voyageurs</span>
-                <strong>2 adultes</strong>
-            </div>
-
-            <a href="index.php?page=destinations" class="search-btn">Rechercher</a>
+                <label for="destination">📍 Destination</label>
+            <input 
+                type="text" 
+                id="destination" 
+                name="destination" 
+                placeholder="Ville ou pays"
+            >
         </div>
+
+        <div class="search-item">
+            <label for="date_depart">📅 Départ</label>
+            <input 
+                type="date" 
+                id="date_depart" 
+                name="date_depart"
+            >
+        </div>
+
+        <div class="search-item">
+            <label for="voyageurs">👥 Voyageurs</label>
+            <select id="voyageurs" name="voyageurs">
+                <option value="1">1 personne</option>
+                <option value="2" selected>2 personnes</option>
+                <option value="3">3 personnes</option>
+                <option value="4">4 personnes</option>
+                <option value="5">5 personnes</option>
+                <option value="6">6 personnes ou +</option>
+            </select>
+        </div>
+
+        <button type="submit" class="search-btn">
+            Rechercher
+        </button>
+    </form>
     </div>
 </section>
 
