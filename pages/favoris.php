@@ -1,9 +1,28 @@
 <?php
-require_once 'classes/Favoris.php';
-
-Favoris::init();
-
 $favoris = Favoris::getItems();
+
+if (is_logged_in() && db_is_available()) {
+    $databaseFavorites = get_user_favorites((int) current_user()['id']);
+
+    foreach ($databaseFavorites as $favorite) {
+        $favoris[] = [
+            'id' => 'db-' . $favorite['id'],
+            'db_id' => (int) $favorite['id'],
+            'type' => $favorite['item_type'],
+            'nom' => $favorite['title'],
+            'details' => $favorite['details'],
+            'image' => $favorite['image_url'],
+            'source_type' => $favorite['source_type'],
+            'source_id' => $favorite['source_id'],
+        ];
+    }
+
+    $favoris = array_values(array_reduce($favoris, function ($carry, $item) {
+        $key = ($item['type'] ?? '') . '|' . ($item['nom'] ?? '') . '|' . (int)($item['source_id'] ?? 0);
+        $carry[$key] = $item;
+        return $carry;
+    }, []));
+}
 ?>
 
 <section class="favorites-page">
@@ -46,7 +65,7 @@ $favoris = Favoris::getItems();
 
                         <p><?php echo htmlspecialchars($item['details']); ?></p>
 
-                        <a href="actions/remove_from_favoris.php?id=<?php echo urlencode($item['id']); ?>">
+                        <a href="actions/remove_from_favoris.php?id=<?php echo urlencode($item['id']); ?>&db_id=<?php echo urlencode((string)($item['db_id'] ?? '')); ?>&redirect=<?php echo urlencode('index.php?page=favoris'); ?>">
                             Retirer
                         </a>
                     </div>

@@ -403,7 +403,10 @@ if ($sort === 'prix') {
                             <strong><?php echo $estimated_total_group; ?>€</strong>
                         </div>
 
-                        <a class="offer-button" href="index.php?page=panier">
+                        <a
+                            class="offer-button"
+                            href="index.php?page=circuit&destination=<?php echo urlencode($offer['city']); ?>&date_depart=<?php echo urlencode($date_depart); ?>&voyageurs=<?php echo urlencode((string) $voyageurs); ?>&budget=<?php echo urlencode((string) $budget_max); ?>"
+                        >
                             Ajouter au budget planner
                         </a>
                     </div>

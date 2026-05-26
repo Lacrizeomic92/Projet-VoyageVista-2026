@@ -64,7 +64,7 @@ if (typeof lucide !== "undefined") lucide.createIcons();
 
             const isVisible = matchesType && matchesDuration && matchesBudget && matchesPublic;
 
-            card.style.display = isVisible ? "flex" : "none";
+            card.style.display = isVisible ? "" : "none";
 
             if (isVisible) {
                 visibleCount++;

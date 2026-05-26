@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/config/bootstrap.php';
+
 $page = $_GET['page'] ?? 'home';
 
 $allowed = [
@@ -11,6 +13,7 @@ $allowed = [
     'panier',
     'profil',
     'login',
+    'register',
     'admin',
     'offres',
     'circuit'
@@ -19,6 +22,17 @@ $allowed = [
 if (!in_array($page, $allowed)) {
     $page = 'home';
 }
+
+if ($page === 'profil') {
+    require_login();
+}
+
+if ($page === 'admin') {
+    require_login();
+    require_admin();
+}
+
+$flash = get_flash();
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +53,12 @@ if (!in_array($page, $allowed)) {
 <body>
 
     <?php include 'includes/navbar.php'; ?>
+
+    <?php if ($flash) { ?>
+        <div class="flash-message flash-<?php echo e($flash['type']); ?>">
+            <?php echo e($flash['message']); ?>
+        </div>
+    <?php } ?>
 
     <main>
         <?php include "pages/$page.php"; ?>

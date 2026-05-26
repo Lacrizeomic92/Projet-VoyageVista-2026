@@ -45,7 +45,7 @@ $featuredDestinations = [
 
             <img
             src="assets/images/logo-voyagevista.png"
-            lt="VoyageVista"
+            alt="VoyageVista"
             >
 
         <span>
