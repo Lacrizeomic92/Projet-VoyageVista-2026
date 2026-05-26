@@ -997,3 +997,373 @@ a{
         width:100%;
     }
 }
+
+/* ========================================= */
+/* PAGE OFFRES */
+/* ========================================= */
+
+.results-page{
+    padding: 40px;
+}
+
+.results-topbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.result-search-summary strong{
+    font-size: 32px;
+    color: #123c8d;
+    display: block;
+}
+
+.result-search-summary span{
+    color: #666;
+    font-size: 16px;
+}
+
+.sort-select{
+    padding: 14px 20px;
+    border-radius: 14px;
+    border: none;
+    font-size: 16px;
+    background: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.results-layout{
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+}
+
+.filters-box{
+    background: white;
+    padding: 25px;
+    border-radius: 30px;
+    height: fit-content;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.filters-box h3{
+    margin-bottom: 20px;
+    color: #123c8d;
+}
+
+.filter-group{
+    margin-bottom: 30px;
+}
+
+.filter-group h4{
+    margin-bottom: 15px;
+    color: #123c8d;
+}
+
+.filter-group label{
+    display: block;
+    margin-bottom: 12px;
+    color: #555;
+    font-weight: 500;
+}
+
+.offers-list{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.offer-card{
+    display: grid;
+    grid-template-columns: 320px 1fr 180px;
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.offer-card:hover{
+    transform: translateY(-5px);
+}
+
+.offer-image{
+    position: relative;
+    height: 260px;
+    background-size: cover;
+    background-position: center;
+}
+
+.offer-badge{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: linear-gradient(135deg,#ff7b00,#ff3d77);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.offer-content{
+    padding: 30px;
+}
+
+.offer-category{
+    color: #1e73ff;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.offer-content h2{
+    font-size: 34px;
+    margin-bottom: 10px;
+    color: #0d214f;
+}
+
+.offer-location{
+    color: #666;
+    margin-bottom: 18px;
+}
+
+.offer-features{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.offer-features span{
+    background: #eef4ff;
+    color: #123c8d;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.offer-price{
+    border-left: 1px solid #eee;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.offer-price small{
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.offer-price strong{
+    font-size: 42px;
+    color: #111;
+}
+
+.offer-price p{
+    color: #666;
+    margin: 10px 0 20px;
+}
+
+.offer-price a{
+    background: linear-gradient(135deg,#ff7b00,#ff3d77);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.offer-price a:hover{
+    opacity: 0.9;
+}
+
+.offers-page{
+    padding:120px 60px 80px;
+    background:#f5f8fc;
+}
+
+.offers-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.offers-header h1{
+    font-size:46px;
+    color:#063b8e;
+}
+
+.offers-header p{
+    color:#64748b;
+    font-weight:700;
+}
+
+.offers-header select{
+    padding:16px 22px;
+    border-radius:14px;
+    border:1px solid #dbe4f0;
+    background:white;
+}
+
+.offers-layout{
+    display:grid;
+    grid-template-columns:290px 1fr;
+    gap:30px;
+}
+
+.offers-filters{
+    background:white;
+    border-radius:24px;
+    padding:25px;
+    height:max-content;
+    box-shadow:0 15px 35px rgba(0,0,0,0.08);
+}
+
+.offers-filters h2{
+    margin-bottom:20px;
+    color:#063b8e;
+}
+
+.offers-filters h3{
+    margin:22px 0 12px;
+}
+
+.offers-filters label{
+    display:block;
+    margin:10px 0;
+    font-weight:600;
+}
+
+.offers-list{
+    display:flex;
+    flex-direction:column;
+    gap:26px;
+}
+
+.big-offer-card{
+    display:grid;
+    grid-template-columns:360px 1fr 220px;
+    background:white;
+    border-radius:26px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,0.1);
+}
+
+.big-offer-img{
+    height:260px;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+}
+
+.big-offer-img span{
+    position:absolute;
+    top:16px;
+    left:16px;
+    background:#020617;
+    color:white;
+    padding:10px 16px;
+    border-radius:8px;
+    font-weight:900;
+}
+
+.big-offer-content{
+    padding:28px;
+}
+
+.offer-type{
+    color:#2563eb;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.big-offer-content h2{
+    font-size:28px;
+    color:#111827;
+    margin-bottom:10px;
+}
+
+.offer-place{
+    color:#64748b;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.offer-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.offer-tags span{
+    background:#eef4ff;
+    color:#063b8e;
+    padding:9px 13px;
+    border-radius:12px;
+    font-weight:700;
+}
+
+.big-offer-price{
+    border-left:1px solid #e5e7eb;
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.big-offer-price strong{
+    font-size:34px;
+    color:#111827;
+}
+
+.big-offer-price button{
+    margin-top:18px;
+    border:none;
+    padding:14px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#0077ff,#00b4c7);
+    color:white;
+    font-weight:900;
+}
+
+.filter-apply-btn{
+    width:100%;
+    margin-top:24px;
+    border:none;
+    padding:14px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#0077ff,#00b4c7);
+    color:white;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.filter-reset-btn{
+    display:block;
+    text-align:center;
+    margin-top:14px;
+    color:#063b8e;
+    font-weight:900;
+}
+
+.offer-rating{
+    color:#f59e0b;
+    font-weight:900;
+    margin-bottom:14px;
+}
+
+.no-offer{
+    background:white;
+    padding:40px;
+    border-radius:26px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.1);
+}
+
+.no-offer h2{
+    color:#063b8e;
+    margin-bottom:10px;
+}

@@ -14,7 +14,7 @@
         </p>
 
         <form class="search-box" action="index.php" method="GET">
-            <input type="hidden" name="page" value="destinations">
+            <input type="hidden" name="page" value="offres">
 
             <div class="search-item">
                 <label for="destination">📍 Destination</label>
