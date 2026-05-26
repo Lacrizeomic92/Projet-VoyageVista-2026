@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+if (typeof lucide !== "undefined") lucide.createIcons();
+
     const toggle = document.querySelector(".menu-toggle");
     const links = document.querySelector(".nav-links");
 
@@ -111,8 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
-<<<<<<< HEAD
-=======
 
 /* ========================================= */
 /* ACTIVITÉS — Filtres + Recherche */
@@ -210,4 +210,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 })();
->>>>>>> bc426346a05c330a826216313bd63e183d8fc5ca

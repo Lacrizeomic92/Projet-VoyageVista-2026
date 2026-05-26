@@ -1,157 +1,213 @@
-<section class="home-hero">
-    <div class="hero-bg"></div>
+<?php
+$featuredDestinations = [
+    [
+        "city" => "Lisbonne",
+        "country" => "Portugal",
+        "price" => 389,
+        "score" => 9.4,
+        "daily" => 42,
+        "tag" => "TOP ÉTUDIANT",
+        "image" => "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1200&q=90"
+    ],
+    [
+        "city" => "Barcelone",
+        "country" => "Espagne",
+        "price" => 459,
+        "score" => 8.9,
+        "daily" => 48,
+        "tag" => "ENTRE AMIS",
+        "image" => "https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1200&q=90"
+    ],
+    [
+        "city" => "Budapest",
+        "country" => "Hongrie",
+        "price" => 329,
+        "score" => 9.5,
+        "daily" => 34,
+        "tag" => "ULTRA BUDGET",
+        "image" => "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=90"
+    ],
+    [
+        "city" => "Prague",
+        "country" => "République tchèque",
+        "price" => 349,
+        "score" => 9.1,
+        "daily" => 36,
+        "tag" => "CITY TRIP",
+        "image" => "https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=1200&q=90"
+    ]
+];
+?>
 
-    <div class="hero-content">
-        <div class="big-logo">
-            <img src="assets/images/logo-voyagevista.png" alt="Logo VoyageVista">
-        </div>
+<section class="vv-hero">
+    <div class="vv-hero-left">
+        <div class="vv-badge-logo">
 
-        <h2>Votre prochain voyage commence ici.</h2>
+            <img
+            src="assets/images/logo-voyagevista.png"
+            lt="VoyageVista"
+            >
 
-        <p class="hero-subtitle">
-            Créez un séjour complet selon votre budget : destination, transport,
-            hébergement et activités dans une seule plateforme.
+        <span>
+            Student Budget
+        </span>
+
+    </div>
+
+        <h1>Voyagez plus,<br>dépensez moins.</h1>
+
+        <p>
+            Comparez les meilleures destinations étudiantes selon votre budget,
+            votre groupe et votre style de voyage.
         </p>
 
-        <form class="search-box" action="index.php" method="GET">
-            <input type="hidden" name="page" value="offres">
+        <form action="index.php" method="GET" class="vv-search">
+            <input type="hidden" name="page" value="circuit">
 
-            <div class="search-item">
-                <label for="destination">📍 Destination</label>
-            <input 
-                type="text" 
-                id="destination" 
-                name="destination" 
-                placeholder="Ville ou pays"
+            <input
+                type="text"
+                name="depart"
+                placeholder="Ville de départ"
+                required
             >
-        </div>
 
-        <div class="search-item">
-            <label for="date_depart">📅 Départ</label>
-            <input 
-                type="date" 
-                id="date_depart" 
-                name="date_depart"
-            >
-        </div>
+        <input
+            type="text"
+            name="destination"
+            placeholder="Destination ou pays"
+            required
+        >
 
-        <div class="search-item">
-            <label for="voyageurs">👥 Voyageurs</label>
-            <select id="voyageurs" name="voyageurs">
-                <option value="1">1 personne</option>
-                <option value="2" selected>2 personnes</option>
-                <option value="3">3 personnes</option>
-                <option value="4">4 personnes</option>
-                <option value="5">5 personnes</option>
-                <option value="6">6 personnes ou +</option>
-            </select>
-        </div>
+        <input
+            type="date"
+            name="date_depart"
+            required
+        >
 
-        <button type="submit" class="search-btn">
-            Rechercher
+        <input
+            type="date"
+            name="date_retour"
+            required
+        >
+
+        <select name="voyageurs" required>
+            <option value="1">1 voyageur</option>
+            <option value="2">2 voyageurs</option>
+            <option value="3">3 voyageurs</option>
+            <option value="4">4 voyageurs</option>
+            <option value="5">5+ voyageurs</option>
+        </select>
+
+        <select name="budget" required>
+            <option value="">Budget max</option>
+            <option value="300">Moins de 300€</option>
+            <option value="500">Moins de 500€</option>
+            <option value="800">Moins de 800€</option>
+            <option value="1200">Moins de 1200€</option>
+        </select>
+
+        <button type="submit">
+            Créer mon circuit
         </button>
-    </form>
+        </form>
     </div>
 </section>
 
-<section class="quick-cards">
-    <a href="index.php?page=transports" class="quick-card quick-vols">
-        <div class="quick-overlay"></div>
-        <div class="quick-content">
-            <span>Transports</span>
-            <h3>Vols & trajets</h3>
-            <p>Comparez les meilleures options pour partir au bon prix.</p>
+<section class="vv-categories">
+
+    <a href="index.php?page=offres&budget=500" class="vv-category-card">
+        <div class="vv-cat-icon"><i data-lucide="piggy-bank"></i></div>
+        <div>
+            <h3>Moins de 500€</h3>
+            <p>Des séjours réalistes avec transport, logement et activités inclus.</p>
         </div>
     </a>
 
-    <a href="index.php?page=hebergements" class="quick-card quick-hotels">
-        <div class="quick-overlay"></div>
-        <div class="quick-content">
-            <span>Hébergements</span>
-            <h3>Hôtels & logements</h3>
-            <p>Trouvez un logement adapté à votre budget.</p>
+    <a href="index.php?page=offres&student_filter[]=Groupe" class="vv-category-card">
+        <div class="vv-cat-icon"><i data-lucide="users"></i></div>
+        <div>
+            <h3>Voyages entre amis</h3>
+            <p>Prix par personne, logements adaptés et activités de groupe.</p>
         </div>
     </a>
 
-    <a href="index.php?page=activites" class="quick-card quick-activities">
-        <div class="quick-overlay"></div>
-        <div class="quick-content">
-            <span>Expériences</span>
-            <h3>Activités</h3>
-            <p>Ajoutez des souvenirs uniques à votre séjour.</p>
+    <a href="index.php?page=offres&student_filter[]=Sans voiture" class="vv-category-card">
+        <div class="vv-cat-icon"><i data-lucide="train-front"></i></div>
+        <div>
+            <h3>Sans voiture</h3>
+            <p>Destinations accessibles en train, bus et transports locaux.</p>
         </div>
     </a>
 
-    <a href="index.php?page=panier" class="quick-card quick-itinerary">
-        <div class="quick-overlay"></div>
-        <div class="quick-content">
-            <span>Organisation</span>
-            <h3>Itinéraire</h3>
-            <p>Regroupez transport, logement et activités.</p>
+    <a href="index.php?page=offres&sort=score" class="vv-category-card">
+        <div class="vv-cat-icon"><i data-lucide="graduation-cap"></i></div>
+        <div>
+            <h3>Bons plans étudiants</h3>
+            <p>Les meilleures offres classées par score étudiant.</p>
         </div>
     </a>
+
 </section>
 
-<section class="section">
-    <div class="section-title">
-        <p>Destinations populaires</p>
+<section class="vv-popular">
+    <div class="vv-section-title">
+        <span>DESTINATIONS POPULAIRES</span>
         <h2>Des idées qui donnent envie de partir</h2>
     </div>
 
-    <div class="destination-grid">
-        <article class="destination-card bali">
-            <div class="badge">Populaire</div>
-            <h3>Bali</h3>
-            <p>Plages, temples et rizières</p>
-            <strong>À partir de 736€</strong>
-        </article>
+    <div class="vv-destination-grid">
+        <?php foreach($featuredDestinations as $destination){ ?>
+            <article class="vv-destination-card">
+                <div class="vv-destination-img" style="background-image:url('<?php echo $destination['image']; ?>')">
+                    <span><?php echo $destination['tag']; ?></span>
+                </div>
 
-        <article class="destination-card swiss">
-            <div class="badge blue-badge">Montagne</div>
-            <h3>Interlaken</h3>
-            <p>Lacs, montagne et aventure</p>
-            <strong>À partir de 429€</strong>
-        </article>
+                <div class="vv-destination-content">
+                    <h3>
+                        <?php echo $destination['city']; ?>,
+                        <?php echo $destination['country']; ?>
+                    </h3>
 
-        <article class="destination-card dubai">
-            <div class="badge purple-badge">City break</div>
-            <h3>Dubaï</h3>
-            <p>Ville, luxe et désert</p>
-            <strong>À partir de 899€</strong>
-        </article>
+                    <div class="vv-destination-row">
+                        <p>⭐ <?php echo $destination['score']; ?>/10</p>
+                        <strong>Dès <?php echo $destination['price']; ?>€</strong>
+                    </div>
 
-        <article class="destination-card lisbon">
-            <div class="badge green-badge">Étudiant</div>
-            <h3>Lisbonne</h3>
-            <p>Soleil, amis et petit budget</p>
-            <strong>À partir de 389€</strong>
-        </article>
+                    <p class="vv-daily">💸 Budget moyen : <?php echo $destination['daily']; ?>€/jour</p>
+
+                    <a href="index.php?page=offres&destination=<?php echo urlencode($destination['city']); ?>">
+                        Voir les offres
+                    </a>
+                </div>
+            </article>
+        <?php } ?>
     </div>
 </section>
 
-<section class="section colorful">
-    <div class="section-title center">
-        <p>Pourquoi VoyageVista ?</p>
-        <h2>Une plateforme pensée pour organiser tout le voyage</h2>
+<section class="vv-advantages">
+
+    <div class="vv-adv-card">
+        <div class="vv-adv-icon"><i data-lucide="graduation-cap"></i></div>
+        <h3>Pensé pour les étudiants</h3>
+        <p>Prix accessibles et bons plans exclusifs.</p>
     </div>
 
-    <div class="features-grid">
-        <div class="feature-card">
-            <div class="feature-icon icon-profile"></div>
-            <h3>Profil intelligent</h3>
-            <p>Un questionnaire permet de proposer des séjours adaptés aux envies, au budget et au style de voyage de chacun.</p>
-        </div>
-
-        <div class="feature-card">
-            <div class="feature-icon icon-budget"></div>
-            <h3>Budget maîtrisé</h3>
-            <p>Les résultats sont pensés pour comparer facilement les prix et construire un voyage réaliste.</p>
-        </div>
-
-        <div class="feature-card">
-            <div class="feature-icon icon-trip"></div>
-            <h3>Expérience complète</h3>
-            <p>Destination, transport, hébergement, activités et panier sont réunis dans une seule plateforme.</p>
-        </div>
+    <div class="vv-adv-card">
+        <div class="vv-adv-icon"><i data-lucide="users"></i></div>
+        <h3>Parfait pour les groupes</h3>
+        <p>Économisez encore plus en voyageant à plusieurs.</p>
     </div>
+
+    <div class="vv-adv-card">
+        <div class="vv-adv-icon"><i data-lucide="shield-check"></i></div>
+        <h3>Réservation sécurisée</h3>
+        <p>Paiement simulé sécurisé et assistance dédiée.</p>
+    </div>
+
+    <div class="vv-adv-card">
+        <div class="vv-adv-icon"><i data-lucide="message-circle"></i></div>
+        <h3>Support étudiant</h3>
+        <p>Une équipe disponible avant, pendant et après votre voyage.</p>
+    </div>
+
 </section>

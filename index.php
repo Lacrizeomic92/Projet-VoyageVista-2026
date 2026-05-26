@@ -12,7 +12,8 @@ $allowed = [
     'profil',
     'login',
     'admin',
-    'offres'
+    'offres',
+    'circuit'
 ];
 
 if (!in_array($page, $allowed)) {
@@ -30,7 +31,9 @@ if (!in_array($page, $allowed)) {
 
     <link rel="stylesheet" href="assets/css/style.css?v=2">
 
-    <script defer src="assets/js/app.js"></script>
+    
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+        <script defer src="assets/js/app.js"></script>
 </head>
 
 <body>

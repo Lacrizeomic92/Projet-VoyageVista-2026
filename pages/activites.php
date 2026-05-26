@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<section class="page">
-    <h1>Activités</h1>
-</section>
-=======
 <section class="page activites-page">
 
     <!-- HERO ACTIVITES -->
@@ -529,4 +524,3 @@
     </div>
 
 </section>
->>>>>>> bc426346a05c330a826216313bd63e183d8fc5ca
