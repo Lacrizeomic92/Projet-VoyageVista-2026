@@ -2882,3 +2882,234 @@ a{
         text-align:left;
     }
 }
+
+.destination-results{
+    width:92%;
+    margin:50px auto 90px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+}
+
+.destination-card{
+    background:white;
+    border-radius:30px;
+    overflow:hidden;
+    box-shadow:0 18px 45px rgba(0,40,90,0.12);
+}
+
+.destination-card img,
+.destination-image{
+    height:220px;
+    width:100%;
+    object-fit:cover;
+    background-size:cover;
+    background-position:center;
+}
+
+.destination-content{
+    padding:26px;
+}
+
+.destination-content span{
+    display:inline-block;
+    background:#e6f3ff;
+    color:#0077ff;
+    padding:8px 14px;
+    border-radius:999px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.destination-content h3{
+    color:#08234d;
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.destination-content p{
+    color:#64748b;
+    font-weight:700;
+    line-height:1.5;
+    margin-bottom:14px;
+}
+
+.destination-content strong{
+    display:block;
+    color:#0077ff;
+    font-size:24px;
+    margin-bottom:18px;
+}
+
+.destination-content a{
+    display:inline-block;
+    background:linear-gradient(135deg,#0077ff,#00b4c7);
+    color:white;
+    padding:13px 18px;
+    border-radius:15px;
+    font-weight:900;
+}
+
+.favorites-page{
+    width:92%;
+    margin:45px auto 90px;
+}
+
+.favorites-header{
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(16px);
+    border-radius:34px;
+    padding:42px;
+    box-shadow:0 18px 45px rgba(0,40,90,0.12);
+    margin-bottom:28px;
+}
+
+.favorites-header span{
+    color:#0077ff;
+    font-weight:900;
+    text-transform:uppercase;
+}
+
+.favorites-header h1{
+    color:#08234d;
+    font-size:46px;
+    margin:10px 0;
+}
+
+.favorites-header p{
+    color:#64748b;
+    font-weight:700;
+}
+
+.favorites-empty{
+    background:white;
+    border-radius:30px;
+    padding:40px;
+    text-align:center;
+    box-shadow:0 18px 45px rgba(0,40,90,0.12);
+}
+
+.favorites-empty h2{
+    color:#08234d;
+    margin-bottom:10px;
+}
+
+.favorites-empty p{
+    color:#64748b;
+    font-weight:700;
+    margin-bottom:22px;
+}
+
+.favorites-empty a{
+    display:inline-block;
+    background:linear-gradient(135deg,#0077ff,#00b4c7);
+    color:white;
+    padding:14px 22px;
+    border-radius:16px;
+    font-weight:900;
+}
+
+.favorites-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+}
+
+.favorite-card{
+    background:white;
+    border-radius:30px;
+    overflow:hidden;
+    box-shadow:0 18px 45px rgba(0,40,90,0.12);
+}
+
+.favorite-img{
+    height:200px;
+    background-size:cover;
+    background-position:center;
+}
+
+.favorite-content{
+    padding:24px;
+}
+
+.favorite-content span{
+    display:inline-block;
+    background:#e6f3ff;
+    color:#0077ff;
+    padding:8px 14px;
+    border-radius:999px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.favorite-content h3{
+    color:#08234d;
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.favorite-content p{
+    color:#64748b;
+    font-weight:700;
+    line-height:1.5;
+    margin-bottom:18px;
+}
+
+.favorite-content a{
+    color:#ef4444;
+    font-weight:900;
+}
+
+@media(max-width:1000px){
+    .favorites-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+.favorite-form{
+    position:absolute;
+    top:16px;
+    right:16px;
+    z-index:5;
+}
+
+.favorite-btn{
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,0.92);
+    color:#ef4444;
+    font-size:28px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(0,0,0,0.18);
+    transition:0.2s;
+    line-height:1;
+}
+
+.favorite-btn:hover{
+    transform:scale(1.08);
+    background:#ef4444;
+    color:white;
+}
+
+.transport-card,
+.housing-card,
+.activity-card,
+.destination-card{
+    position:relative;
+}
+
+.favorite-btn.is-favorite{
+    background:#ef4444;
+    color:white;
+}
+
+.cart-nav-btn{
+    background:linear-gradient(135deg,#0077ff,#00b4c7);
+    color:white !important;
+    padding:12px 18px;
+    border-radius:999px;
+    font-weight:900;
+}

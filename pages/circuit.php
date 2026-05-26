@@ -5,6 +5,23 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once 'classes/Panier.php';
 Panier::init();
 
+function isFavori($type, $nom)
+{
+    if (!isset($_SESSION['favoris'])) {
+        return false;
+    }
+
+    foreach ($_SESSION['favoris'] as $favori) {
+        if (($favori['type'] ?? '') === $type && ($favori['nom'] ?? '') === $nom) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+
 $depart = htmlspecialchars($_GET['depart'] ?? 'Nice');
 $destination = htmlspecialchars($_GET['destination'] ?? 'Italie');
 $date_depart = htmlspecialchars($_GET['date_depart'] ?? '');
@@ -99,6 +116,10 @@ if (empty($transports)) {
 }
 
 foreach ($transports as &$transport) {
+    if (!isset($transport['image'])) {
+        $transport['image'] = "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=90";
+    }
+
     if (!isset($transport['retour'])) {
         $trajetParts = explode("→", $transport['trajet']);
         $arrivalCity = trim(end($trajetParts));
@@ -297,6 +318,8 @@ $activites = $activiteDatabase[$selectedDestination] ?? $activiteDatabase["itali
 
 $totalTransport = 49;
 $totalLogement = array_sum(array_column($logements, 'prix')) * 2;
+$activites = $activites ?? [];
+$activites = $activites ?? [];
 $totalActivites = array_sum(array_column($activites, 'prix'));
 $totalNourriture = 25 * 7;
 $total = $totalTransport + $totalLogement + $totalActivites + $totalNourriture;
@@ -323,15 +346,15 @@ $totalGroupe = $total * $voyageurs;
         </p>
 
         <?php
-$itemsBudget = Panier::getItems();
-$totalBudget = Panier::getTotal();
-$totalParPersonne = $totalBudget / max(1, $voyageurs);
-?>
+            $itemsBudgetHeader = Panier::getItems();
+            $totalBudgetHeader = Panier::getTotal();
+            $totalParPersonneHeader = $totalBudgetHeader / max(1, $voyageurs);
+        ?>
 
-<div class="budget-status <?php echo $totalParPersonne <= $budget ? 'ok' : 'warning'; ?>">
-    Budget actuel : <?php echo number_format($totalParPersonne, 2); ?>€ / personne
-    <?php echo $totalParPersonne <= $budget ? 'Compatible avec votre budget' : 'Budget à ajuster'; ?>
-</div>
+        <div class="budget-status <?php echo $totalParPersonneHeader <= $budget ? 'ok' : 'warning'; ?>">
+            Budget actuel : <?php echo number_format($totalParPersonneHeader, 2); ?>€ / personne
+            <?php echo $totalParPersonneHeader <= $budget ? ' Compatible avec votre budget' : ' Budget à ajuster'; ?>
+        </div>
     </div>
 
     <div class="circuit-tabs">
@@ -367,6 +390,18 @@ $totalParPersonne = $totalBudget / max(1, $voyageurs);
                         <span class="transport-type">
                             <?php echo htmlspecialchars($transport['type']); ?>
                         </span>
+
+                        <form action="actions/add_to_favoris.php" method="POST" class="favorite-form">
+                            <input type="hidden" name="type" value="Transport">
+                            <input type="hidden" name="nom" value="<?php echo htmlspecialchars($transport['type']); ?>">
+                            <input type="hidden" name="details" value="<?php echo htmlspecialchars($transport['trajet'] . ' / ' . $transport['retour']); ?>">
+                            <input type="hidden" name="image" value="<?php echo htmlspecialchars($transport['image']); ?>">
+                            <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>#transport">
+                            <?php $isFav = isFavori('Transport', $transport['type']); ?>
+                            <button type="submit" class="favorite-btn <?php echo $isFav ? 'is-favorite' : ''; ?>">
+                                ♥
+                            </button>
+                        </form>
                     </div>
 
                     <div class="transport-content">
@@ -395,7 +430,7 @@ $totalParPersonne = $totalBudget / max(1, $voyageurs);
                                 <input type="hidden" name="nom" value="<?php echo htmlspecialchars($transport['type']); ?>">
                                 <input type="hidden" name="details" value="<?php echo htmlspecialchars($transport['trajet'] . ' / ' . $transport['retour']); ?>">
                                 <input type="hidden" name="prix" value="<?php echo htmlspecialchars($transport['prix_total']); ?>">
-                                <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+                                <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>#transport">
                                 <button type="submit">Ajouter au budget</button>
                             </form>
                         </div>
@@ -467,26 +502,40 @@ $totalParPersonne = $totalBudget / max(1, $voyageurs);
                                 </div>
                             </div>
                         <?php } ?>
+                    </div><div class="route-actions">
+                        <form action="actions/add_to_cart.php" method="POST">
+                            <input type="hidden" name="type" value="Circuit">
+                            <input type="hidden" name="nom" value="<?php echo htmlspecialchars($circuit['name']); ?>">
+                            <input type="hidden" name="details" value="<?php
+                                $circuitDetails = [];
+                                foreach ($circuit['steps'] as $stepCart) {
+                                    $circuitDetails[] = ($stepCart['days'] ?? '') . ' : ' . ($stepCart['city'] ?? '');
+                                }
+                                echo htmlspecialchars(implode(' | ', $circuitDetails));
+                            ?>">
+                            <input type="hidden" name="prix" value="0">
+                            <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>#circuit">
+                            <button type="submit" class="route-btn">Choisir ce circuit</button>
+                        </form>
+
+                        <form action="actions/add_to_favoris.php" method="POST">
+                            <input type="hidden" name="type" value="Circuit">
+                            <input type="hidden" name="nom" value="<?php echo htmlspecialchars($circuit['name']); ?>">
+                            <input type="hidden" name="details" value="<?php
+                                $favDetails = [];
+                                foreach ($circuit['steps'] as $stepFav) {
+                                    $favDetails[] = ($stepFav['days'] ?? '') . ' : ' . ($stepFav['city'] ?? '');
+                                }
+                                echo htmlspecialchars(implode(' | ', $favDetails));
+                            ?>">
+                            <input type="hidden" name="image" value="">
+                            <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>#circuit">
+                            <?php $isFavCircuit = isFavori('Circuit', $circuit['name']); ?>
+                            <button type="submit" class="route-fav-btn <?php echo $isFavCircuit ? 'is-favorite' : ''; ?>">
+                                ♥ <?php echo $isFavCircuit ? 'Déjà en favoris' : 'Ajouter aux favoris'; ?>
+                            </button>
+                        </form>
                     </div>
-                    <form action="actions/add_to_cart.php" method="POST">
-    <input type="hidden" name="type" value="Circuit">
-    <input type="hidden" name="nom" value="<?php echo htmlspecialchars($circuit['name']); ?>">
-    <input type="hidden" name="details" value="<?php
-        $details = [];
-
-        foreach ($circuit['steps'] as $step) {
-            $details[] = $step['days'] . ' : ' . $step['city'];
-        }
-
-        echo htmlspecialchars(implode(' | ', $details));
-    ?>">
-    <input type="hidden" name="prix" value="0">
-    <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>#circuit">
-
-    <button type="submit" class="route-btn">
-        Choisir ce circuit
-    </button>
-</form>
                 </article>
             <?php } ?>
         </div>
@@ -515,6 +564,18 @@ $totalParPersonne = $totalBudget / max(1, $voyageurs);
                         style="background-image:url('<?php echo $logement['image']; ?>')"
                     >
                         <span><?php echo $logement['type']; ?></span>
+
+                        <form action="actions/add_to_favoris.php" method="POST" class="favorite-form">
+                            <input type="hidden" name="type" value="Logement">
+                            <input type="hidden" name="nom" value="<?php echo htmlspecialchars($logement['nom']); ?>">
+                            <input type="hidden" name="details" value="<?php echo htmlspecialchars($logement['ville'] . ' - ' . $logement['type']); ?>">
+                            <input type="hidden" name="image" value="<?php echo htmlspecialchars($logement['image']); ?>">
+                            <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>#logement">
+                            <?php $isFav = isFavori('Logement', $logement['nom']); ?>
+                            <button type="submit" class="favorite-btn <?php echo $isFav ? 'is-favorite' : ''; ?>">
+                                ♥
+                            </button>
+                        </form>
                     </div>
 
                     <div class="housing-content">
@@ -543,7 +604,7 @@ $totalParPersonne = $totalBudget / max(1, $voyageurs);
                                 <input type="hidden" name="nom" value="<?php echo htmlspecialchars($logement['nom']); ?>">
                                 <input type="hidden" name="details" value="<?php echo htmlspecialchars($logement['ville'] . ' - ' . $logement['type']); ?>">
                                 <input type="hidden" name="prix" value="<?php echo htmlspecialchars($logement['prix']); ?>">
-                                <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+                                <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>#logement">
                                 <button type="submit">Ajouter au budget</button>
                             </form>
                         </div>
@@ -581,6 +642,18 @@ $totalParPersonne = $totalBudget / max(1, $voyageurs);
                         style="background-image:url('<?php echo $activite['image']; ?>')"
                     >
                         <span><?php echo $activite['type']; ?></span>
+
+                        <form action="actions/add_to_favoris.php" method="POST" class="favorite-form">
+                            <input type="hidden" name="type" value="Activité">
+                            <input type="hidden" name="nom" value="<?php echo htmlspecialchars($activite['nom']); ?>">
+                            <input type="hidden" name="details" value="<?php echo htmlspecialchars($activite['ville'] . ' - ' . $activite['type']); ?>">
+                            <input type="hidden" name="image" value="<?php echo htmlspecialchars($activite['image']); ?>">
+                            <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>#activites">
+                            <?php $isFav = isFavori('Activité', $activite['nom']); ?>
+                            <button type="submit" class="favorite-btn <?php echo $isFav ? 'is-favorite' : ''; ?>">
+                                ♥
+                            </button>
+                        </form>
                     </div>
 
                     <div class="activity-content">
@@ -601,7 +674,7 @@ $totalParPersonne = $totalBudget / max(1, $voyageurs);
                                 <input type="hidden" name="nom" value="<?php echo htmlspecialchars($activite['nom']); ?>">
                                 <input type="hidden" name="details" value="<?php echo htmlspecialchars($activite['ville'] . ' - ' . $activite['type']); ?>">
                                 <input type="hidden" name="prix" value="<?php echo htmlspecialchars($activite['prix']); ?>">
-                                <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+                                <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>#activites">
                                 <button type="submit">Ajouter au budget</button>
                             </form>
                         </div>
@@ -631,7 +704,7 @@ $totalParPersonne = $totalBudget / max(1, $voyageurs);
 
         <div class="tab-title-row">
             <div>
-                <h2>Budget</h2>
+                <h2>Budget planner</h2>
                 <p>Votre budget se construit automatiquement selon les éléments ajoutés au circuit.</p>
             </div>
         </div>
@@ -676,13 +749,27 @@ $totalParPersonne = $totalBudget / max(1, $voyageurs);
 const buttons = document.querySelectorAll('.tab-btn');
 const contents = document.querySelectorAll('.tab-content');
 
+function openTab(tabName){
+    buttons.forEach(btn => btn.classList.remove('active'));
+    contents.forEach(content => content.classList.remove('active'));
+
+    const activeButton = document.querySelector('.tab-btn[data-tab="' + tabName + '"]');
+    const activeContent = document.getElementById(tabName);
+
+    if(activeButton && activeContent){
+        activeButton.classList.add('active');
+        activeContent.classList.add('active');
+    }
+}
+
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        buttons.forEach(btn => btn.classList.remove('active'));
-        contents.forEach(content => content.classList.remove('active'));
-
-        button.classList.add('active');
-        document.getElementById(button.dataset.tab).classList.add('active');
+        openTab(button.dataset.tab);
     });
 });
+
+if(window.location.hash){
+    const tabFromHash = window.location.hash.replace('#', '');
+    openTab(tabFromHash);
+}
 </script>

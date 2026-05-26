@@ -3,6 +3,10 @@
         <img src="assets/images/logo-voyagevista.png" alt="Logo VoyageVista" class="site-logo">
     </a>
 
+    <a href="index.php?page=panier" class="cart-nav-btn">
+    🛒 Panier
+    </a>
+
     <button class="menu-toggle">☰</button>
 
     <div class="nav-links">
