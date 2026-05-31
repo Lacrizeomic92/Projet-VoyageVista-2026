@@ -6,6 +6,8 @@ USE voyagevista;
 
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS reservation_items;
+DROP TABLE IF EXISTS reservation_travelers;
+DROP TABLE IF EXISTS reservation_history;
 DROP TABLE IF EXISTS reservations;
 DROP TABLE IF EXISTS notifications;
 DROP TABLE IF EXISTS favoris;
@@ -132,6 +134,29 @@ CREATE TABLE reservation_items (
     total_price DECIMAL(10, 2) NOT NULL DEFAULT 0,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_reservation_items_reservation
+        FOREIGN KEY (reservation_id) REFERENCES reservations(id)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE reservation_travelers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    reservation_id INT NOT NULL,
+    firstname VARCHAR(120) NOT NULL,
+    lastname VARCHAR(120) NOT NULL,
+    email VARCHAR(180) NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_reservation_travelers_reservation
+        FOREIGN KEY (reservation_id) REFERENCES reservations(id)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE reservation_history (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    reservation_id INT NOT NULL,
+    action_label VARCHAR(150) NOT NULL,
+    details TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_reservation_history_reservation
         FOREIGN KEY (reservation_id) REFERENCES reservations(id)
         ON DELETE CASCADE
 );
@@ -306,6 +331,12 @@ INSERT INTO reservation_items (
 (2, 'Activité', 'activite', 4, 'Balade gothique et tapas', 'Barcelone - Culture', 16.00, 1, 16.00),
 (3, 'Transport', 'transport', 6, 'Avion', 'Paris -> Rome / retour inclus', 213.00, 1, 213.00),
 (3, 'Hébergement', 'hebergement', 5, 'Roma Student Hostel', 'Rome - Auberge', 32.00, 2, 64.00);
+
+INSERT INTO reservation_history (reservation_id, action_label, details) VALUES
+(1, 'Réservation créée', 'Réservation VV-20260501-AB12CD confirmée pour 351,00 €.'),
+(2, 'Réservation créée', 'Réservation VV-20260410-CD34EF confirmée pour 309,00 €.'),
+(2, 'Réservation annulée', 'La réservation complète VV-20260410-CD34EF a été annulée.'),
+(3, 'Réservation créée', 'Réservation VV-20260402-GH56IJ confirmée pour 277,00 €.');
 
 INSERT INTO notifications (user_id, title, message, is_read) VALUES
 (2, 'Réservation confirmée', 'Votre réservation VV-20260501-AB12CD a bien été enregistrée. Bon voyage à Lisbonne !', 0),

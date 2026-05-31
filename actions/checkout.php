@@ -21,6 +21,31 @@ $cardName = trim((string) ($_POST['card_name'] ?? ''));
 $cardNumber = preg_replace('/\D+/', '', (string) ($_POST['card_number'] ?? ''));
 $cardExpiry = trim((string) ($_POST['card_expiry'] ?? ''));
 $cardCvv = preg_replace('/\D+/', '', (string) ($_POST['card_cvv'] ?? ''));
+$expectedTravelers = max(1, (int) ($stayContext['voyageurs'] ?? 1));
+$travelerFirstnames = $_POST['traveler_firstname'] ?? [];
+$travelerLastnames = $_POST['traveler_lastname'] ?? [];
+$travelerEmails = $_POST['traveler_email'] ?? [];
+$travelers = [];
+
+for ($index = 0; $index < $expectedTravelers; $index++) {
+    $firstname = trim((string) ($travelerFirstnames[$index] ?? ''));
+    $lastname = trim((string) ($travelerLastnames[$index] ?? ''));
+    $email = trim((string) ($travelerEmails[$index] ?? ''));
+
+    if ($firstname === '' || $lastname === '') {
+        redirect_with_flash('../index.php?page=panier', 'error', 'Merci de renseigner le prénom et le nom de chaque voyageur.');
+    }
+
+    if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        redirect_with_flash('../index.php?page=panier', 'error', 'Un email voyageur est invalide.');
+    }
+
+    $travelers[] = [
+        'firstname' => $firstname,
+        'lastname' => $lastname,
+        'email' => $email,
+    ];
+}
 
 if ($cardName === '' || strlen($cardNumber) < 12 || $cardExpiry === '' || strlen($cardCvv) < 3) {
     redirect_with_flash('../index.php?page=panier', 'error', 'Merci de remplir le bloc de paiement simulé avant validation.');
@@ -40,6 +65,7 @@ $reservation = create_reservation_from_cart(
         'card_number' => $cardNumber,
         'card_expiry' => $cardExpiry,
         'card_cvv' => $cardCvv,
+        'travelers' => $travelers,
     ],
     $stayContext
 );

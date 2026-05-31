@@ -17,6 +17,8 @@ $allowed = [
     'admin',
     'offres',
     'circuit',
+    'modifier_reservation',
+    'recu_reservation',
     'contact',
     'confidentialite',
     'conditions'
@@ -26,7 +28,7 @@ if (!in_array($page, $allowed)) {
     $page = 'home';
 }
 
-if ($page === 'profil') {
+if (in_array($page, ['profil', 'modifier_reservation', 'recu_reservation'], true)) {
     require_login();
 }
 
@@ -46,7 +48,7 @@ $flash = get_flash();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoyageVista</title>
 
-    <link rel="stylesheet" href="assets/css/style.css?v=7">
+    <link rel="stylesheet" href="assets/css/style.css?v=14">
 
     
         <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>

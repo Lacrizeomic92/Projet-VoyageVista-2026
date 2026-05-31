@@ -2655,6 +2655,23 @@ a{
     line-height:1.4;
 }
 
+.transport-info .date-meta,
+.listing-extra-meta .date-meta,
+.date-meta{
+    background:#ecfeff;
+    color:#0e7490;
+    border-radius:999px;
+    padding:8px 12px;
+    font-weight:900;
+}
+
+.transport-info .date-meta.warning,
+.listing-extra-meta .date-meta.warning,
+.date-meta.warning{
+    background:#fff7ed;
+    color:#9a3412;
+}
+
 .transport-bottom{
     display:flex;
     align-items:center;
@@ -3773,12 +3790,23 @@ a{
 }
 
 .profile-stats div,
+.profile-stat-link,
 .admin-stat-card{
     background:white;
     border-radius:24px;
     padding:22px;
     box-shadow:0 12px 30px rgba(0,40,90,0.08);
     text-align:center;
+}
+
+.profile-stat-link{
+    display:block;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-stat-link:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 34px rgba(0,119,255,0.16);
 }
 
 .profile-stats strong,
@@ -3793,6 +3821,39 @@ a{
 .admin-stat-card span{
     color:#64748b;
     font-weight:800;
+}
+
+.profile-card-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    margin-bottom:20px;
+}
+
+.profile-card-title span{
+    color:#ff7a00;
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:1.4px;
+    text-transform:uppercase;
+}
+
+.profile-card-title h2{
+    margin-top:6px;
+}
+
+.profile-card-title strong{
+    min-width:46px;
+    height:46px;
+    border-radius:999px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    background:linear-gradient(135deg,#0077ff,#00b4c7);
+    box-shadow:0 12px 24px rgba(0,119,255,0.22);
+    font-size:20px;
 }
 
 .profile-layout,
@@ -3824,6 +3885,10 @@ a{
     grid-template-columns:repeat(2,1fr);
     gap:16px;
     margin-bottom:18px;
+}
+
+.password-grid{
+    margin-top:16px;
 }
 
 .reservation-list,
@@ -3880,6 +3945,7 @@ a{
     justify-content:space-between;
     align-items:center;
     gap:14px;
+    flex-wrap:wrap;
 }
 
 .reservation-bottom strong{
@@ -3913,13 +3979,280 @@ a{
     color:#991b1b;
 }
 
+.reservation-edit-page{
+    width:92%;
+    margin:45px auto 90px;
+}
+
+.reservation-edit-hero,
+.reservation-edit-card{
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,0.72);
+    border-radius:34px;
+    box-shadow:0 18px 45px rgba(0,40,90,0.12);
+}
+
+.reservation-edit-hero{
+    padding:42px;
+    margin-bottom:28px;
+}
+
+.reservation-edit-hero span{
+    color:#ff7a00;
+    font-weight:900;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.reservation-edit-hero h1{
+    color:#063b8e;
+    font-size:48px;
+    margin:10px 0;
+}
+
+.reservation-edit-hero p{
+    color:#475569;
+    font-size:18px;
+    font-weight:700;
+    line-height:1.6;
+}
+
+.reservation-edit-card{
+    padding:32px;
+}
+
+.reservation-edit-card > h2{
+    color:#063b8e;
+    margin-bottom:10px;
+}
+
+.reservation-edit-card > a,
+.reservation-edit-bottom a{
+    color:#0077ff;
+    font-weight:900;
+}
+
+.reservation-edit-top,
+.reservation-edit-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    margin-bottom:24px;
+}
+
+.reservation-edit-top span{
+    color:#0077ff;
+    font-weight:900;
+}
+
+.reservation-edit-top h2{
+    color:#08234d;
+    font-size:30px;
+    margin:6px 0;
+}
+
+.reservation-edit-top p{
+    color:#64748b;
+    font-weight:700;
+}
+
+.reservation-edit-items{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.reservation-history-panel{
+    margin:22px 0;
+    padding:22px;
+    border-radius:24px;
+    background:#f8fbff;
+    border:1px solid #e2ebf7;
+}
+
+.reservation-history-title span{
+    color:#ff7a00;
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.reservation-history-title h3{
+    color:#08234d;
+    font-size:24px;
+    margin:5px 0 16px;
+}
+
+.reservation-history-list,
+.receipt-timeline{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.reservation-history-list li,
+.receipt-timeline li{
+    padding:14px 16px;
+    border-left:4px solid #0077ff;
+    border-radius:16px;
+    background:white;
+}
+
+.reservation-history-list span,
+.receipt-timeline span{
+    color:#64748b;
+    font-size:13px;
+    font-weight:800;
+}
+
+.reservation-history-list strong,
+.receipt-timeline strong{
+    display:block;
+    color:#063b8e;
+    margin:4px 0;
+}
+
+.reservation-history-list p,
+.receipt-timeline p{
+    color:#475569;
+    font-weight:700;
+}
+
+.reservation-edit-item{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(280px,420px);
+    gap:22px;
+    padding:22px;
+    border-radius:24px;
+    background:#f8fbff;
+    border:1px solid #e2ebf7;
+}
+
+.reservation-edit-item span{
+    color:#0077ff;
+    font-weight:900;
+}
+
+.reservation-edit-item h3{
+    color:#08234d;
+    font-size:24px;
+    margin:6px 0 10px;
+}
+
+.reservation-edit-item p{
+    color:#475569;
+    font-weight:700;
+    line-height:1.5;
+    margin-bottom:10px;
+}
+
+.reservation-edit-item strong,
+.reservation-edit-bottom strong{
+    color:#063b8e;
+    font-size:20px;
+}
+
+.reservation-edit-form{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:12px;
+}
+
+.reservation-edit-transport-panel{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.reservation-edit-form label{
+    color:#08234d;
+    font-weight:900;
+}
+
+.reservation-edit-form select{
+    width:100%;
+    padding:14px 16px;
+    border-radius:16px;
+    border:1px solid #dbeafe;
+    background:white;
+    color:#08234d;
+    font-weight:800;
+}
+
+.reservation-edit-form button{
+    border:none;
+    border-radius:18px;
+    padding:15px 18px;
+    color:white;
+    background:linear-gradient(135deg,#0077ff,#00b4c7);
+    box-shadow:0 14px 26px rgba(0,119,255,0.22);
+    cursor:pointer;
+    font-weight:900;
+}
+
+.reservation-edit-cancel-form button{
+    width:100%;
+    border:1px solid rgba(220,38,38,0.18);
+    border-radius:18px;
+    padding:14px 18px;
+    color:#b91c1c;
+    background:#fff1f2;
+    cursor:pointer;
+    font-weight:900;
+    transition:background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reservation-edit-cancel-form button:hover,
+.reservation-edit-cancel-form button:focus-visible{
+    background:#ffe4e6;
+    box-shadow:0 12px 24px rgba(220,38,38,0.12);
+    transform:translateY(-1px);
+}
+
+.reservation-edit-note{
+    align-self:center;
+    padding:14px 16px;
+    border-radius:18px;
+    background:#eaf4ff;
+    color:#063b8e !important;
+}
+
+.reservation-edit-fee-note{
+    padding:12px 14px;
+    border-radius:16px;
+    background:#fff7ed;
+    color:#9a3412 !important;
+    font-size:14px;
+}
+
+@media(max-width:800px){
+    .reservation-edit-top,
+    .reservation-edit-bottom{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .reservation-edit-item{
+        grid-template-columns:1fr;
+    }
+
+    .reservation-edit-hero h1{
+        font-size:36px;
+    }
+}
+
 .profile-logout-link{
     margin-top:18px;
 }
 
 .listing-filter-form{
     display:grid;
-    grid-template-columns:2fr repeat(3,1fr) auto auto;
+    grid-template-columns:2fr repeat(5,1fr) auto auto;
     gap:14px;
     margin-bottom:28px;
     background:rgba(255,255,255,0.92);
@@ -4112,6 +4445,212 @@ a{
     color:#64748b;
     font-weight:700;
     line-height:1.5;
+}
+
+.checkout-travelers{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.checkout-traveler-card{
+    padding:14px;
+    border-radius:18px;
+    background:#f8fbff;
+    border:1px solid #e2ebf7;
+}
+
+.checkout-traveler-card strong{
+    display:block;
+    color:#063b8e;
+    margin-bottom:10px;
+}
+
+.receipt-page{
+    width:88%;
+    margin:45px auto 90px;
+}
+
+.receipt-actions{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    margin-bottom:18px;
+}
+
+.receipt-actions a,
+.receipt-actions button{
+    border:none;
+    border-radius:999px;
+    padding:13px 18px;
+    color:white;
+    background:linear-gradient(135deg,#0077ff,#00b4c7);
+    box-shadow:0 12px 24px rgba(0,119,255,0.2);
+    cursor:pointer;
+    font-weight:900;
+}
+
+.receipt-card{
+    background:rgba(255,255,255,0.95);
+    border:1px solid rgba(255,255,255,0.8);
+    border-radius:30px;
+    box-shadow:0 18px 45px rgba(0,40,90,0.12);
+    padding:34px;
+}
+
+.receipt-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:18px;
+    padding-bottom:24px;
+    border-bottom:1px solid #e2ebf7;
+}
+
+.receipt-header span,
+.receipt-grid span,
+.receipt-total span{
+    color:#ff7a00;
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.receipt-header h1{
+    color:#063b8e;
+    font-size:44px;
+    margin:6px 0;
+}
+
+.receipt-header p{
+    color:#64748b;
+    font-weight:800;
+}
+
+.receipt-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    margin:24px 0;
+}
+
+.receipt-grid div{
+    border-radius:20px;
+    background:#f8fbff;
+    border:1px solid #e2ebf7;
+    padding:18px;
+}
+
+.receipt-grid strong{
+    display:block;
+    color:#08234d;
+    margin-top:8px;
+}
+
+.receipt-section{
+    margin-top:26px;
+}
+
+.receipt-section h2{
+    color:#063b8e;
+    margin-bottom:14px;
+}
+
+.receipt-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.receipt-list li{
+    display:flex;
+    justify-content:space-between;
+    gap:18px;
+    padding:16px;
+    border-radius:18px;
+    background:#f8fbff;
+    border:1px solid #e2ebf7;
+}
+
+.receipt-list span{
+    color:#08234d;
+    font-weight:900;
+}
+
+.receipt-list small{
+    display:block;
+    color:#64748b;
+    font-weight:700;
+    margin-top:4px;
+}
+
+.receipt-list strong{
+    color:#063b8e;
+    white-space:nowrap;
+}
+
+.receipt-total{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:18px;
+    margin-top:28px;
+    padding:22px;
+    border-radius:22px;
+    color:white;
+    background:linear-gradient(135deg,#063b8e,#0077ff);
+}
+
+.receipt-total span{
+    color:#bfdbfe;
+}
+
+.receipt-total strong{
+    font-size:32px;
+}
+
+@media(max-width:900px){
+    .receipt-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .receipt-list li,
+    .receipt-header,
+    .receipt-actions{
+        flex-direction:column;
+    }
+}
+
+@media print{
+    body{
+        background:white !important;
+    }
+
+    .navbar,
+    footer,
+    .no-print,
+    .flash-message{
+        display:none !important;
+    }
+
+    main{
+        padding:0 !important;
+    }
+
+    .receipt-page{
+        width:100%;
+        margin:0;
+    }
+
+    .receipt-card{
+        box-shadow:none;
+        border:none;
+        border-radius:0;
+        padding:0;
+    }
 }
 
 .checkout-inline-fields{

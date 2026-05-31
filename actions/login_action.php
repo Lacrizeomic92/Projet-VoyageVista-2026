@@ -13,6 +13,10 @@ if ($email === '' || $password === '') {
     redirect_with_flash('../index.php?page=login', 'error', 'Merci de renseigner votre email et votre mot de passe.');
 }
 
+if (!db_is_available()) {
+    redirect_with_flash('../index.php?page=login', 'error', db_error_message());
+}
+
 $user = find_user_by_email($email);
 
 if (!$user || !password_verify($password, $user['password_hash'])) {

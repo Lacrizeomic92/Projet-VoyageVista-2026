@@ -96,6 +96,46 @@ $datesValid = $stayContext['dates_valid'] ?? true;
                 </div>
 
                 <form action="actions/checkout.php" method="POST" class="checkout-form">
+                    <h3>Voyageurs du séjour</h3>
+                    <p class="payment-note">
+                        Renseignez les personnes associées à cette réservation.
+                    </p>
+
+                    <div class="checkout-travelers">
+                        <?php for ($travelerIndex = 0; $travelerIndex < $voyageurs; $travelerIndex++) { ?>
+                            <div class="checkout-traveler-card">
+                                <strong>Voyageur <?php echo $travelerIndex + 1; ?></strong>
+
+                                <label for="traveler-firstname-<?php echo $travelerIndex; ?>">Prénom</label>
+                                <input
+                                    id="traveler-firstname-<?php echo $travelerIndex; ?>"
+                                    type="text"
+                                    name="traveler_firstname[]"
+                                    value="<?php echo $travelerIndex === 0 && is_logged_in() ? e(current_user()['firstname'] ?? '') : ''; ?>"
+                                    required
+                                >
+
+                                <label for="traveler-lastname-<?php echo $travelerIndex; ?>">Nom</label>
+                                <input
+                                    id="traveler-lastname-<?php echo $travelerIndex; ?>"
+                                    type="text"
+                                    name="traveler_lastname[]"
+                                    value="<?php echo $travelerIndex === 0 && is_logged_in() ? e(current_user()['lastname'] ?? '') : ''; ?>"
+                                    required
+                                >
+
+                                <label for="traveler-email-<?php echo $travelerIndex; ?>">Email</label>
+                                <input
+                                    id="traveler-email-<?php echo $travelerIndex; ?>"
+                                    type="email"
+                                    name="traveler_email[]"
+                                    value="<?php echo $travelerIndex === 0 && is_logged_in() ? e(current_user()['email'] ?? '') : ''; ?>"
+                                    placeholder="optionnel"
+                                >
+                            </div>
+                        <?php } ?>
+                    </div>
+
                     <h3>Paiement simulé</h3>
                     <p class="payment-note">
                         Aucune transaction réelle n’est effectuée. Ce bloc sert à démontrer le parcours de réservation.

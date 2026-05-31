@@ -20,10 +20,10 @@ $unreadCount = count(array_filter($notifications, function ($notification) {
         </div>
 
         <div class="profile-stats">
-            <div>
+            <a href="#mes-reservations" class="profile-stat-link">
                 <strong><?php echo count($reservations); ?></strong>
-                <span>réservation(s)</span>
-            </div>
+                <span>mes réservations</span>
+            </a>
             <div>
                 <strong><?php echo $unreadCount; ?></strong>
                 <span>notification(s) non lue(s)</span>
@@ -69,7 +69,41 @@ $unreadCount = count(array_filter($notifications, function ($notification) {
             </section>
 
             <section class="profile-card">
-                <h2>Historique des réservations</h2>
+                <h2>Changer mon mot de passe</h2>
+                <p>
+                    Pour sécuriser votre compte, renseignez votre mot de passe actuel
+                    avant d’en choisir un nouveau.
+                </p>
+
+                <form action="actions/update_password.php" method="POST" class="profile-form">
+                    <label for="current-password">Mot de passe actuel</label>
+                    <input id="current-password" type="password" name="current_password" required>
+
+                    <div class="profile-form-grid password-grid">
+                        <div>
+                            <label for="new-password">Nouveau mot de passe</label>
+                            <input id="new-password" type="password" name="new_password" minlength="6" required>
+                        </div>
+
+                        <div>
+                            <label for="new-password-confirmation">Confirmation</label>
+                            <input id="new-password-confirmation" type="password" name="password_confirmation" minlength="6" required>
+                        </div>
+                    </div>
+
+                    <button type="submit">Mettre à jour mon mot de passe</button>
+                </form>
+            </section>
+
+            <section class="profile-card" id="mes-reservations">
+                <div class="profile-card-title">
+                    <div>
+                        <span>Suivi voyage</span>
+                        <h2>Mes réservations</h2>
+                    </div>
+
+                    <strong><?php echo count($reservations); ?></strong>
+                </div>
 
                 <?php if (empty($reservations)) { ?>
                     <p class="empty-state">Aucune réservation enregistrée pour le moment.</p>
@@ -107,7 +141,15 @@ $unreadCount = count(array_filter($notifications, function ($notification) {
                                 <div class="reservation-bottom">
                                     <strong><?php echo format_price($reservation['total_amount']); ?> €</strong>
 
+                                    <a href="index.php?page=recu_reservation&id=<?php echo (int) $reservation['id']; ?>">
+                                        Récap PDF
+                                    </a>
+
                                     <?php if ($reservation['status'] !== 'annulée') { ?>
+                                        <a href="index.php?page=modifier_reservation&id=<?php echo (int) $reservation['id']; ?>">
+                                            Modifier
+                                        </a>
+
                                         <a href="actions/cancel_reservation.php?id=<?php echo (int) $reservation['id']; ?>">
                                             Annuler la réservation
                                         </a>

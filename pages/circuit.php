@@ -10,6 +10,10 @@ $budget = max(100, (int) ($_GET['budget'] ?? ($stayContext['budget'] ?? 500)));
 $_SESSION['voyageurs'] = $voyageurs;
 
 $datesValid = are_dates_valid($dateDepart, $dateRetour);
+$datesComplete = $dateDepart !== '' && $dateRetour !== '';
+$nightsCount = $datesComplete && $datesValid
+    ? max(1, (int) round((strtotime($dateRetour) - strtotime($dateDepart)) / 86400))
+    : 0;
 $destination = db_is_available() ? find_destination_by_query($destinationQuery) : null;
 
 if (!$destination && db_is_available()) {
@@ -103,6 +107,12 @@ $totalParPersonne = $voyageurs > 0 ? $totalBudget / $voyageurs : $totalBudget;
         </div>
     <?php } ?>
 
+    <?php if (!$datesComplete) { ?>
+        <div class="app-alert app-alert-warning">
+            Ajoutez une date de départ et une date de retour pour réserver un transport ou un hébergement.
+        </div>
+    <?php } ?>
+
     <?php if (!db_is_available()) { ?>
         <div class="app-alert app-alert-warning">
             <?php echo e(db_error_message()); ?>
@@ -170,6 +180,11 @@ $totalParPersonne = $voyageurs > 0 ? $totalBudget / $voyageurs : $totalBudget;
                                 <div class="transport-info">
                                     <span>Durée : <?php echo e($transport['duration']); ?></span>
                                     <span><?php echo e($transport['details']); ?></span>
+                                    <?php if ($datesComplete && $datesValid) { ?>
+                                        <span class="date-meta">Aller : <?php echo format_date_fr($dateDepart); ?> • Retour : <?php echo format_date_fr($dateRetour); ?></span>
+                                    <?php } else { ?>
+                                        <span class="date-meta warning">Dates à préciser avant réservation</span>
+                                    <?php } ?>
                                     <span>Places restantes : <?php echo (int) $transport['available_seats']; ?></span>
                                 </div>
 
@@ -183,7 +198,7 @@ $totalParPersonne = $voyageurs > 0 ? $totalBudget / $voyageurs : $totalBudget;
                                         </small>
                                     </div>
 
-                                    <?php if ((int) $transport['available_seats'] > 0) { ?>
+                                    <?php if ((int) $transport['available_seats'] > 0 && $datesComplete && $datesValid) { ?>
                                         <form action="actions/add_to_cart.php" method="POST">
                                             <input type="hidden" name="type" value="Transport">
                                             <input type="hidden" name="nom" value="<?php echo e($transport['transport_type']); ?>">
@@ -193,6 +208,8 @@ $totalParPersonne = $voyageurs > 0 ? $totalBudget / $voyageurs : $totalBudget;
                                             <input type="hidden" name="redirect" value="<?php echo e($_SERVER['REQUEST_URI']); ?>#transport">
                                             <button type="submit">Ajouter au budget</button>
                                         </form>
+                                    <?php } elseif ((int) $transport['available_seats'] > 0) { ?>
+                                        <span class="catalog-disabled-badge">Dates requises</span>
                                     <?php } else { ?>
                                         <span class="catalog-disabled-badge">Complet</span>
                                     <?php } ?>
@@ -330,6 +347,12 @@ $totalParPersonne = $voyageurs > 0 ? $totalBudget / $voyageurs : $totalBudget;
                                 <div class="listing-extra-meta">
                                     <span>Capacité : <?php echo (int) $hebergement['capacity']; ?></span>
                                     <span>Chambres restantes : <?php echo (int) $hebergement['available_rooms']; ?></span>
+                                    <?php if ($datesComplete && $datesValid) { ?>
+                                        <span>Du <?php echo format_date_fr($dateDepart); ?> au <?php echo format_date_fr($dateRetour); ?></span>
+                                        <span><?php echo $nightsCount; ?> nuit<?php echo $nightsCount > 1 ? 's' : ''; ?></span>
+                                    <?php } else { ?>
+                                        <span class="date-meta warning">Dates à préciser</span>
+                                    <?php } ?>
                                 </div>
 
                                 <div class="housing-bottom">
@@ -338,7 +361,7 @@ $totalParPersonne = $voyageurs > 0 ? $totalBudget / $voyageurs : $totalBudget;
                                         <strong><?php echo format_price($hebergement['price_per_night']); ?> € / nuit</strong>
                                     </div>
 
-                                    <?php if ((int) $hebergement['available_rooms'] > 0) { ?>
+                                    <?php if ((int) $hebergement['available_rooms'] > 0 && $datesComplete && $datesValid) { ?>
                                         <form action="actions/add_to_cart.php" method="POST">
                                             <input type="hidden" name="type" value="Hébergement">
                                             <input type="hidden" name="nom" value="<?php echo e($hebergement['name']); ?>">
@@ -348,6 +371,8 @@ $totalParPersonne = $voyageurs > 0 ? $totalBudget / $voyageurs : $totalBudget;
                                             <input type="hidden" name="redirect" value="<?php echo e($_SERVER['REQUEST_URI']); ?>#logement">
                                             <button type="submit">Ajouter au budget</button>
                                         </form>
+                                    <?php } elseif ((int) $hebergement['available_rooms'] > 0) { ?>
+                                        <span class="catalog-disabled-badge">Dates requises</span>
                                     <?php } else { ?>
                                         <span class="catalog-disabled-badge">Indisponible</span>
                                     <?php } ?>
