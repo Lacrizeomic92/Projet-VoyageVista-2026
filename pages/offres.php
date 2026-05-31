@@ -31,6 +31,57 @@ $offers = [
         "nightlife_score" => 9
     ],
     [
+        "city" => "Lisbonne",
+        "country" => "Portugal",
+        "img" => "https://images.unsplash.com/photo-1548707309-dcebeab9ea9b?auto=format&fit=crop&w=1200&q=90",
+        "tag" => "WEEK-END",
+        "type" => "Vol + Hôtel",
+        "title" => "Lisbonne city break",
+        "place" => "Lisbonne, Portugal",
+        "features" => ["Petit budget", "Sans voiture", "Culture"],
+        "duration" => "4 jours / 3 nuits",
+        "price" => 419,
+        "rating" => 4.6,
+        "student_score" => 9.1,
+        "daily_budget" => 44,
+        "car_free_score" => 9,
+        "nightlife_score" => 8
+    ],
+    [
+        "city" => "Lisbonne",
+        "country" => "Portugal",
+        "img" => "https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=1200&q=90",
+        "tag" => "TRAIN & TRAM",
+        "type" => "Vol + Auberge",
+        "title" => "Lisbonne sans voiture",
+        "place" => "Lisbonne, Portugal",
+        "features" => ["Sans voiture", "Culture", "Groupe"],
+        "duration" => "6 jours / 5 nuits",
+        "price" => 469,
+        "rating" => 4.5,
+        "student_score" => 8.9,
+        "daily_budget" => 40,
+        "car_free_score" => 10,
+        "nightlife_score" => 8
+    ],
+    [
+        "city" => "Lisbonne",
+        "country" => "Portugal",
+        "img" => "https://images.unsplash.com/photo-1585208798174-6cedd86e019a?auto=format&fit=crop&w=1200&q=90",
+        "tag" => "PLAGE PROCHE",
+        "type" => "Vol + Hôtel",
+        "title" => "Lisbonne plage & quartiers",
+        "place" => "Lisbonne, Portugal",
+        "features" => ["Plage", "Sans voiture", "Petit budget"],
+        "duration" => "5 jours / 4 nuits",
+        "price" => 445,
+        "rating" => 4.5,
+        "student_score" => 8.8,
+        "daily_budget" => 43,
+        "car_free_score" => 8,
+        "nightlife_score" => 8
+    ],
+    [
         "city" => "Barcelone",
         "country" => "Espagne",
         "img" => "https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1200&q=90",
@@ -44,6 +95,57 @@ $offers = [
         "rating" => 4.6,
         "student_score" => 8.9,
         "daily_budget" => 48,
+        "car_free_score" => 10,
+        "nightlife_score" => 10
+    ],
+    [
+        "city" => "Barcelone",
+        "country" => "Espagne",
+        "img" => "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=90",
+        "tag" => "PLAGE",
+        "type" => "Vol + Auberge",
+        "title" => "Barcelone plage & tapas",
+        "place" => "Barcelone, Espagne",
+        "features" => ["Plage", "Petit budget", "Vie nocturne", "Groupe"],
+        "duration" => "4 jours / 3 nuits",
+        "price" => 399,
+        "rating" => 4.5,
+        "student_score" => 8.7,
+        "daily_budget" => 46,
+        "car_free_score" => 9,
+        "nightlife_score" => 10
+    ],
+    [
+        "city" => "Barcelone",
+        "country" => "Espagne",
+        "img" => "https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?auto=format&fit=crop&w=1200&q=90",
+        "tag" => "CULTURE",
+        "type" => "Vol + Hôtel",
+        "title" => "Barcelone Gaudi express",
+        "place" => "Barcelone, Espagne",
+        "features" => ["Culture", "Sans voiture", "Groupe"],
+        "duration" => "3 jours / 2 nuits",
+        "price" => 349,
+        "rating" => 4.4,
+        "student_score" => 8.5,
+        "daily_budget" => 50,
+        "car_free_score" => 10,
+        "nightlife_score" => 8
+    ],
+    [
+        "city" => "Barcelone",
+        "country" => "Espagne",
+        "img" => "https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?auto=format&fit=crop&w=1200&q=90",
+        "tag" => "NIGHTLIFE",
+        "type" => "Vol + Hôtel",
+        "title" => "Barcelone nuits étudiantes",
+        "place" => "Barcelone, Espagne",
+        "features" => ["Vie nocturne", "Sans voiture", "Groupe"],
+        "duration" => "5 jours / 4 nuits",
+        "price" => 489,
+        "rating" => 4.6,
+        "student_score" => 8.9,
+        "daily_budget" => 52,
         "car_free_score" => 10,
         "nightlife_score" => 10
     ],
@@ -82,9 +184,60 @@ $offers = [
         "nightlife_score" => 9
     ],
     [
+        "city" => "Budapest",
+        "country" => "Hongrie",
+        "img" => "https://images.unsplash.com/photo-1565426873118-a17ed65d74b9?auto=format&fit=crop&w=1200&q=90",
+        "tag" => "THERMES",
+        "type" => "Vol + Hôtel",
+        "title" => "Budapest thermes & ville",
+        "place" => "Budapest, Hongrie",
+        "features" => ["Petit budget", "Culture", "Sans voiture"],
+        "duration" => "5 jours / 4 nuits",
+        "price" => 389,
+        "rating" => 4.6,
+        "student_score" => 9.2,
+        "daily_budget" => 36,
+        "car_free_score" => 9,
+        "nightlife_score" => 8
+    ],
+    [
+        "city" => "Budapest",
+        "country" => "Hongrie",
+        "img" => "https://images.unsplash.com/photo-1551867633-194f125bddfa?auto=format&fit=crop&w=1200&q=90",
+        "tag" => "ENTRE AMIS",
+        "type" => "Vol + Auberge",
+        "title" => "Budapest ruin bars",
+        "place" => "Budapest, Hongrie",
+        "features" => ["Petit budget", "Vie nocturne", "Groupe"],
+        "duration" => "4 jours / 3 nuits",
+        "price" => 359,
+        "rating" => 4.5,
+        "student_score" => 9.3,
+        "daily_budget" => 35,
+        "car_free_score" => 8,
+        "nightlife_score" => 10
+    ],
+    [
+        "city" => "Budapest",
+        "country" => "Hongrie",
+        "img" => "https://images.unsplash.com/photo-1607959295163-3a7d01c95f4d?auto=format&fit=crop&w=1200&q=90",
+        "tag" => "DANUBE",
+        "type" => "Train + Hôtel",
+        "title" => "Budapest au bord du Danube",
+        "place" => "Budapest, Hongrie",
+        "features" => ["Culture", "Sans voiture", "Petit budget"],
+        "duration" => "6 jours / 5 nuits",
+        "price" => 449,
+        "rating" => 4.4,
+        "student_score" => 8.8,
+        "daily_budget" => 33,
+        "car_free_score" => 9,
+        "nightlife_score" => 7
+    ],
+    [
         "city" => "Prague",
         "country" => "République tchèque",
-        "img" => "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=90",
+        "img" => "https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=1200&q=90",
         "tag" => "CITY TRIP",
         "type" => "Vol + Auberge",
         "title" => "Prague petit prix",
@@ -97,6 +250,57 @@ $offers = [
         "daily_budget" => 36,
         "car_free_score" => 9,
         "nightlife_score" => 8
+    ],
+    [
+        "city" => "Prague",
+        "country" => "République tchèque",
+        "img" => "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=90",
+        "tag" => "CULTURE",
+        "type" => "Vol + Hôtel",
+        "title" => "Prague château & vieille ville",
+        "place" => "Prague, République tchèque",
+        "features" => ["Culture", "Sans voiture", "Petit budget"],
+        "duration" => "4 jours / 3 nuits",
+        "price" => 389,
+        "rating" => 4.6,
+        "student_score" => 9.0,
+        "daily_budget" => 38,
+        "car_free_score" => 9,
+        "nightlife_score" => 7
+    ],
+    [
+        "city" => "Prague",
+        "country" => "République tchèque",
+        "img" => "https://images.unsplash.com/photo-1562624475-96c2bc08fab9?auto=format&fit=crop&w=1200&q=90",
+        "tag" => "ENTRE AMIS",
+        "type" => "Vol + Auberge",
+        "title" => "Prague entre amis",
+        "place" => "Prague, République tchèque",
+        "features" => ["Petit budget", "Vie nocturne", "Groupe"],
+        "duration" => "5 jours / 4 nuits",
+        "price" => 409,
+        "rating" => 4.5,
+        "student_score" => 8.9,
+        "daily_budget" => 37,
+        "car_free_score" => 8,
+        "nightlife_score" => 9
+    ],
+    [
+        "city" => "Prague",
+        "country" => "République tchèque",
+        "img" => "https://images.unsplash.com/photo-1600623471616-8c1966c91ff6?auto=format&fit=crop&w=1200&q=90",
+        "tag" => "TRAIN EASY",
+        "type" => "Train + Hôtel",
+        "title" => "Prague sans voiture",
+        "place" => "Prague, République tchèque",
+        "features" => ["Sans voiture", "Culture", "Groupe"],
+        "duration" => "6 jours / 5 nuits",
+        "price" => 479,
+        "rating" => 4.4,
+        "student_score" => 8.7,
+        "daily_budget" => 35,
+        "car_free_score" => 10,
+        "nightlife_score" => 7
     ],
     [
         "city" => "Marrakech",
@@ -214,10 +418,24 @@ $filtered = array_filter($offers, function ($offer) use ($destination, $type_fil
 
 $filtered = array_values($filtered);
 
+$filteredCount = count($filtered);
+$activeFilterCount = ($budget_max !== '' ? 1 : 0) + count($type_filters) + count($student_filters);
+$headerTitle = 'Bons plans étudiants';
+
+if ($budget_max === '500') {
+    $headerTitle = 'Voyages à moins de 500€';
+} elseif (in_array('Groupe', $student_filters, true)) {
+    $headerTitle = 'Voyages entre amis';
+} elseif (in_array('Sans voiture', $student_filters, true)) {
+    $headerTitle = 'Séjours sans voiture';
+} elseif ($sort === 'score') {
+    $headerTitle = 'Meilleurs bons plans étudiants';
+} elseif ($destination !== '') {
+    $headerTitle = 'Voyages à ' . ucfirst($destination);
+}
+
 if ($sort === 'prix') {
     usort($filtered, fn($a, $b) => $a['price'] <=> $b['price']);
-} elseif ($sort === 'score') {
-    usort($filtered, fn($a, $b) => $b['student_score'] <=> $a['student_score']);
 } elseif ($sort === 'budget_jour') {
     usort($filtered, fn($a, $b) => $a['daily_budget'] <=> $b['daily_budget']);
 } else {
@@ -229,7 +447,8 @@ if ($sort === 'prix') {
 
     <div class="offers-header">
         <div>
-            <h1>Bons plans étudiants</h1>
+            <span class="offers-eyebrow">Student deals</span>
+            <h1><?php echo htmlspecialchars($headerTitle); ?></h1>
             <p>
                 <?php echo $destination ? htmlspecialchars(ucfirst($destination)) : 'Toutes les destinations étudiantes'; ?>
                 • <?php echo $date_depart ? date('d/m/Y', strtotime($date_depart)) : 'Dates flexibles'; ?>
@@ -240,12 +459,18 @@ if ($sort === 'prix') {
             </p>
         </div>
 
-        <form method="GET">
+        <form method="GET" class="offers-sort-form">
             <input type="hidden" name="page" value="offres">
             <input type="hidden" name="destination" value="<?php echo htmlspecialchars($destination); ?>">
             <input type="hidden" name="date_depart" value="<?php echo htmlspecialchars($date_depart); ?>">
             <input type="hidden" name="voyageurs" value="<?php echo htmlspecialchars($voyageurs); ?>">
             <input type="hidden" name="budget" value="<?php echo htmlspecialchars($budget_max); ?>">
+            <?php foreach ($type_filters as $type_filter) { ?>
+                <input type="hidden" name="type[]" value="<?php echo htmlspecialchars($type_filter); ?>">
+            <?php } ?>
+            <?php foreach ($student_filters as $student_filter) { ?>
+                <input type="hidden" name="student_filter[]" value="<?php echo htmlspecialchars($student_filter); ?>">
+            <?php } ?>
 
             <select name="sort" onchange="this.form.submit()">
                 <option value="pertinence" <?php if ($sort === 'pertinence') echo 'selected'; ?>>
@@ -265,11 +490,18 @@ if ($sort === 'prix') {
     </div>
 
     <div class="student-intro-box">
-        <h2>VoyageVista Student Budget</h2>
-        <p>
-            Notre sélection privilégie les destinations accessibles aux étudiants :
-            prix raisonnables, transports faciles, activités de groupe et coût réel sur place.
-        </p>
+        <div>
+            <h2>VoyageVista Student Budget</h2>
+            <p>
+                Notre sélection privilégie les destinations accessibles aux étudiants :
+                prix raisonnables, transports faciles, activités de groupe et coût réel sur place.
+            </p>
+        </div>
+
+        <div class="student-intro-stats">
+            <span><?php echo $filteredCount; ?></span>
+            <strong><?php echo $filteredCount > 1 ? 'offres trouvées' : 'offre trouvée'; ?></strong>
+        </div>
     </div>
 
     <div class="offers-layout">
@@ -281,6 +513,11 @@ if ($sort === 'prix') {
                 <input type="hidden" name="date_depart" value="<?php echo htmlspecialchars($date_depart); ?>">
                 <input type="hidden" name="voyageurs" value="<?php echo htmlspecialchars($voyageurs); ?>">
                 <input type="hidden" name="sort" value="<?php echo htmlspecialchars($sort); ?>">
+
+                <div class="filters-heading">
+                    <span>Affiner</span>
+                    <strong><?php echo $activeFilterCount; ?></strong>
+                </div>
 
                 <h2>Filtres étudiants</h2>
 
@@ -295,7 +532,7 @@ if ($sort === 'prix') {
 
                 <h3>Type de séjour</h3>
                 <?php foreach (["Vol + Auberge", "Vol + Hôtel", "Train + Hôtel", "Vol + Riad"] as $type) { ?>
-                    <label>
+                    <label class="filter-check">
                         <input
                             type="checkbox"
                             name="type[]"
@@ -308,7 +545,7 @@ if ($sort === 'prix') {
 
                 <h3>Priorités étudiantes</h3>
                 <?php foreach (["Petit budget", "Sans voiture", "Vie nocturne", "Groupe", "Culture", "Plage"] as $filter) { ?>
-                    <label>
+                    <label class="filter-check">
                         <input
                             type="checkbox"
                             name="student_filter[]"
@@ -342,6 +579,11 @@ if ($sort === 'prix') {
             <?php foreach ($filtered as $offer) {
                 $price_per_person = $offer['price'];
                 $estimated_total_group = $price_per_person * $voyageurs;
+                $offerSourceId = abs(crc32($offer['city'] . '|' . $offer['title']));
+                $offerDetails = $offer['place']
+                    . ' • ' . $offer['duration']
+                    . ' • ' . implode(', ', $offer['features'])
+                    . ' • Score étudiant ' . $offer['student_score'] . '/10';
             ?>
                 <article class="big-offer-card">
 
@@ -360,7 +602,7 @@ if ($sort === 'prix') {
 
                         <div class="student-badges">
                             <?php foreach ($offer['features'] as $feature) { ?>
-                                <span class="badge">
+                                <span>
                                     <?php echo $feature; ?>
                                 </span>
                             <?php } ?>
@@ -403,12 +645,21 @@ if ($sort === 'prix') {
                             <strong><?php echo $estimated_total_group; ?>€</strong>
                         </div>
 
-                        <a
-                            class="offer-button"
-                            href="index.php?page=circuit&destination=<?php echo urlencode($offer['city']); ?>&date_depart=<?php echo urlencode($date_depart); ?>&voyageurs=<?php echo urlencode((string) $voyageurs); ?>&budget=<?php echo urlencode((string) $budget_max); ?>"
-                        >
-                            Ajouter au budget planner
-                        </a>
+                        <form action="actions/add_to_cart.php" method="POST" class="offer-cart-form">
+                            <input type="hidden" name="type" value="Séjour étudiant">
+                            <input type="hidden" name="nom" value="<?php echo htmlspecialchars($offer['title']); ?>">
+                            <input type="hidden" name="details" value="<?php echo htmlspecialchars($offerDetails); ?>">
+                            <input type="hidden" name="unit_price" value="<?php echo htmlspecialchars((string) $price_per_person); ?>">
+                            <input type="hidden" name="quantity" value="<?php echo htmlspecialchars((string) $voyageurs); ?>">
+                            <input type="hidden" name="image" value="<?php echo htmlspecialchars($offer['img']); ?>">
+                            <input type="hidden" name="source_type" value="offre">
+                            <input type="hidden" name="source_id" value="<?php echo htmlspecialchars((string) $offerSourceId); ?>">
+                            <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+
+                            <button class="offer-button" type="submit">
+                                Ajouter au panier
+                            </button>
+                        </form>
                     </div>
 
                 </article>
