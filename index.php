@@ -46,7 +46,7 @@ $flash = get_flash();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoyageVista</title>
 
-    <link rel="stylesheet" href="assets/css/style.css?v=3">
+    <link rel="stylesheet" href="assets/css/style.css?v=5">
 
     
         <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
