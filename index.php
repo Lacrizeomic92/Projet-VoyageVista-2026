@@ -16,7 +16,10 @@ $allowed = [
     'register',
     'admin',
     'offres',
-    'circuit'
+    'circuit',
+    'contact',
+    'confidentialite',
+    'conditions'
 ];
 
 if (!in_array($page, $allowed)) {
@@ -43,7 +46,7 @@ $flash = get_flash();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoyageVista</title>
 
-    <link rel="stylesheet" href="assets/css/style.css?v=2">
+    <link rel="stylesheet" href="assets/css/style.css?v=3">
 
     
         <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>

@@ -10,9 +10,9 @@
     </div>
 
     <div class="footer-links">
-        <a href="#">Support</a>
-        <a href="#">Conditions</a>
-        <a href="#">Confidentialité</a>
+        <a href="index.php?page=contact">Contact</a>
+        <a href="index.php?page=conditions">Conditions générales</a>
+        <a href="index.php?page=confidentialite">Politique de confidentialité</a>
     </div>
 
 </footer>

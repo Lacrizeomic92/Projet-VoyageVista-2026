@@ -7,8 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $redirect = trim((string) ($_POST['redirect'] ?? 'index.php?page=panier'));
 
-if (!str_starts_with($redirect, 'index.php')) {
-    $redirect = 'index.php?page=panier';
+if (str_contains($redirect, 'index.php')) {
+    $redirect = 'index.php' . substr($redirect, strpos($redirect, 'index.php') + strlen('index.php'));
+} else {
+    $redirect = 'index.php?page=favoris'; // ou panier
 }
 
 $stayContext = get_stay_context();

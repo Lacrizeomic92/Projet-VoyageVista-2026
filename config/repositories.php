@@ -314,16 +314,24 @@ function get_transports(array $filters = [])
         $params['destination_id'] = (int) $filters['destination_id'];
     }
 
-    if (!empty($filters['search'])) {
-        $sql .= ' AND (
-            transports.transport_type LIKE :search
-            OR transports.departure_city LIKE :search
-            OR transports.arrival_city LIKE :search
-            OR destinations.name LIKE :search
-            OR transports.details LIKE :search
-        )';
-        $params['search'] = '%' . trim($filters['search']) . '%';
-    }
+   if (!empty($filters['search'])) {
+
+    $search = '%' . trim($filters['search']) . '%';
+
+    $sql .= ' AND (
+        transports.transport_type LIKE :search1
+        OR transports.departure_city LIKE :search2
+        OR transports.arrival_city LIKE :search3
+        OR destinations.name LIKE :search4
+        OR transports.details LIKE :search5
+    )';
+
+    $params['search1'] = $search;
+    $params['search2'] = $search;
+    $params['search3'] = $search;
+    $params['search4'] = $search;
+    $params['search5'] = $search;
+}
 
     if (!empty($filters['transport_type']) && $filters['transport_type'] !== 'all') {
         $sql .= ' AND transports.transport_type = :transport_type';

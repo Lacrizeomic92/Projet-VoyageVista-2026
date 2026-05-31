@@ -7,8 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $redirect = trim((string) ($_POST['redirect'] ?? 'index.php?page=favoris'));
 
-if (!str_starts_with($redirect, 'index.php')) {
-    $redirect = 'index.php?page=favoris';
+if (str_contains($redirect, 'index.php')) {
+    $redirect = 'index.php' . substr($redirect, strpos($redirect, 'index.php') + strlen('index.php'));
+} else {
+    $redirect = 'index.php?page=favoris'; // ou panier
 }
 
 $sourceType = strtolower((string) ($_POST['source_type'] ?? ''));

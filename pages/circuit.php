@@ -427,7 +427,7 @@ $totalParPersonne = $voyageurs > 0 ? $totalBudget / $voyageurs : $totalBudget;
         <div class="tab-content" id="budget">
             <div class="tab-title-row">
                 <div>
-                    <h2>Budget planner</h2>
+                    <h2>Budget</h2>
                     <p>Le coût total du séjour se met à jour automatiquement avec les éléments ajoutés.</p>
                 </div>
             </div>

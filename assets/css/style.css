@@ -3787,3 +3787,178 @@ a{
         align-items:flex-start;
     }
 }
+
+/* ===== PAGE CONTACT ===== */
+
+.contact-page {
+    padding: 60px 20px;
+}
+
+.contact-hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.contact-hero h1 {
+    font-size: 48px;
+    color: #0b1f5e;
+    margin-bottom: 10px;
+}
+
+.contact-hero p {
+    font-size: 18px;
+    color: #444;
+}
+
+.contact-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    gap: 30px;
+    align-items: stretch;
+}
+
+.contact-form,
+.contact-info {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.contact-form {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-form label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #0b1f5e;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+}
+
+.contact-form textarea {
+    resize: none;
+}
+
+.contact-form button {
+    margin-top: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    transform: translateY(-2px);
+}
+
+.contact-info h2 {
+    color: #0b1f5e;
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    margin-bottom: 12px;
+    color: #444;
+    line-height: 1.6;
+}
+
+.message-contact {
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    background: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media screen and (max-width: 900px) {
+    .contact-container {
+        flex-direction: column;
+    }
+}
+
+.confidentialite-container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    line-height: 1.8;
+}
+
+.confidentialite-container h1 {
+    color: #1f3c88;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.confidentialite-container h2 {
+    margin-top: 25px;
+    color: #1f3c88;
+}
+
+.confidentialite-container ul {
+    margin-left: 20px;
+}
+
+.btn-retour {
+    display: inline-block;
+    margin-bottom: 25px;
+    text-decoration: none;
+    background: #1f3c88;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn-retour:hover {
+    background: #162d66;
+}
+
+.conditions-container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    line-height: 1.8;
+}
+
+.conditions-container h1 {
+    color: #1f3c88;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.conditions-container h2 {
+    margin-top: 25px;
+    color: #1f3c88;
+}
